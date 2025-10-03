@@ -1,4 +1,3 @@
-import React from 'react';
 import ItemList from './items-list';
 
 const Page = () => {
