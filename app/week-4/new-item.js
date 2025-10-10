@@ -6,12 +6,16 @@ function NewItem() {
     const [quantity, setQuantity] = useState(1);
 
     const increment = () => {
-        setQuantity((prev) => (prev < 20 ? prev + 1 : prev));
-    };
+    if (quantity < 20) {
+      setQuantity(prev => prev + 1);
+    }
+  };
 
-    const decrement = () => {
-        setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
-    };
+  const decrement = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
+  };
 
     return (
     <div className="mx-auto my-4 transform bg-white w-45 h-13 flex items-center justify-center">

@@ -8,16 +8,19 @@ function NewItem() {
   const [category, setCategory] = useState('Produce');
 
   const increment = () => {
-    setQuantity((prev) => (prev < 20 ? prev + 1 : prev));
+    if (quantity < 20) {
+      setQuantity(prev => prev + 1);
+    }
   };
 
   const decrement = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const item = {
       name,
       quantity,
@@ -25,6 +28,7 @@ function NewItem() {
     };
 
     console.log('Submitted item:', item);
+
     alert(`Item Added: ${name}, Quantity: ${quantity}, Category: ${category}`);
 
     setName('');
@@ -34,7 +38,6 @@ function NewItem() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white">
-
       <div className="mb-4 text-black">
         <input
           type="text"
@@ -50,6 +53,7 @@ function NewItem() {
         <div className="flex items-center">
           <h2 className="border px-4.5 py-0.75 mr-1 rounded text-xl text-black font-semibold"> {quantity}</h2>
         <button
+          type='button'
           onClick={decrement}
           disabled={quantity === 1}
           className={`mx-2 px-3 py-1 text-xl rounded extrabold
@@ -60,6 +64,7 @@ function NewItem() {
           -
         </button>
         <button
+          type='button' 
           onClick={increment}
           disabled={quantity === 20}
           className={`mx-2 px-3 py-1 text-xl rounded extrabold
@@ -95,8 +100,8 @@ function NewItem() {
       </div>
 
       <button
-        type="submit"
-        className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded"
+        type='submit'
+        className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
       >
         Add Item
       </button>
