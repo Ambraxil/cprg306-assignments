@@ -2,12 +2,12 @@
 
 import Item from "./item";
 import { useState } from "react";
-import items from './items.json';
+import itemsData from './items.json';
 
 const ItemList = () => {
   const [sortBy, setSortBy] = useState("name");
 
-  const sortedItems = [...items].sort((a, b) => {
+  const sortedItems = [...itemsData].sort((a, b) => {
   if (sortBy === "name") {
     if (a.name < b.name) return -1;
     if (a.name > b.name) return 1;
@@ -23,7 +23,7 @@ const ItemList = () => {
   }
   });
 
-  const groupedItems = items.reduce((groups, item) => {
+  const groupedItems = itemsData.reduce((groups, item) => {
   const category = item.category;
   if (!groups[category]) {
     groups[category] = [];
