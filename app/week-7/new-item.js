@@ -18,7 +18,6 @@ function NewItem({ onAddItem }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const item = {
-      // Generate an ID for the new item to match the other items in items.json.
       id: Math.random().toString(36).substring(2, 9),
       name,
       quantity,
