@@ -18,6 +18,15 @@ export default function Page() {
     setItems(data);
   };
 
+    if (!user) {
+    return (
+      <div>
+        <h1>Secured Page</h1>
+        <p>Please sign in to access the shopping list features.</p>
+      </div>
+    );
+  }
+  
   useEffect(() => {
     if (user) {
       loadItems();
