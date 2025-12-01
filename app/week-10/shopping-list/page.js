@@ -17,7 +17,6 @@ export default function Page() {
     const data = await getItems(user.uid);
     setItems(data);
   };
-
     if (!user) {
     return (
       <div>
