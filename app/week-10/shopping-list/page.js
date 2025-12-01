@@ -13,6 +13,8 @@ export default function Page() {
   const [selectedItemName, setSelectedItemName] = useState("");
 
   const loadItems = async () => {
+    const data = await getItems(user.uid);
+    setItems(data);
     if (!user) {
       return (
         <div>
@@ -21,8 +23,6 @@ export default function Page() {
         </div>
       );
     };
-    const data = await getItems(user.uid);
-    setItems(data);
   }
   
   useEffect(() => {
