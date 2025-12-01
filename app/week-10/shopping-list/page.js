@@ -12,17 +12,21 @@ export default function Page() {
   const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
 
+  if (!user) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-6">
+        <h1 className="text-3xl font-bold mb-4">Secured Page</h1>
+        <p className="text-lg text-center">
+          Please sign in to access the shopping list features.
+        </p>
+      </div>
+    );
+  }
+
   const loadItems = async () => {
+    if (!user) return;
     const data = await getItems(user.uid);
     setItems(data);
-    if (!user) {
-      return (
-        <div>
-          <h1>Secured Page</h1>
-          <p>Please sign in to access the shopping list features.</p>
-        </div>
-      );
-    };
   }
   
   useEffect(() => {
